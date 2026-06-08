@@ -1,0 +1,357 @@
+{
+  "schema_version": "0.1.0",
+  "course": {
+    "course_id": "SAI-501",
+    "title": "학교 행정업무 혁신 (School Administrative Work Innovation with AI)",
+    "audience": "교육대학원 석사과정 — 현직교사",
+    "weeks": 15,
+    "version": "0.1.0"
+  },
+  "modules": [
+    {
+      "module_id": "M1",
+      "title": "행정업무의 실태 — 무엇이 발생하는가",
+      "weeks": [1, 2, 3],
+      "core_question": "학교에서 어떤 행정업무가 발생하는지 데이터로 분석",
+      "learning_objectives": [
+        "공개 행정문서(1차 수집 20,755건, 분석 가능 15,851건)가 학교 행정업무의 데이터 흔적임을 설명할 수 있다",
+        "대표학교 연간 업무사건 후보 714건 데이터셋의 추출 과정과 10개 업무 도메인 분류체계를 이해한다",
+        "도메인별·월별 업무 분포를 분석하여 업무가 집중되는 시기와 영역을 식별할 수 있다",
+        "데이터에 드러나지 않는 업무(가시성 결손)의 존재와 그 함의를 토론할 수 있다"
+      ],
+      "resources": [
+        "kb://design/dataset_design_doc",
+        "kb://calendar/work_event_candidates_714",
+        "kb://calendar/domain_summary",
+        "kb://calendar/monthly_domain_crosstab"
+      ],
+      "activities": [
+        {
+          "activity_id": "M1-A1",
+          "type": "reading",
+          "description": "데이터세트 설계서를 읽고 공개 행정문서 20,755건이 분석 가능 파일 15,851건을 거쳐 대표학교 연간 업무사건 후보 714건(정보공개포털 161 + 학교 홈페이지 553)으로 추출된 과정과 10개 도메인 분류체계를 정리한다",
+          "agent_support": ["course-qa"],
+          "sensitivity": "normal",
+          "routing_hint": "either"
+        },
+        {
+          "activity_id": "M1-A2",
+          "type": "data_analysis",
+          "description": "업무사건 714건 데이터셋에서 도메인별 분포(급식보건안전 195, 평가교육과정 141, 개인정보민원보고 116 등)와 월별 피크를 분석하고 자기 직무 관련 업무를 필터링한다",
+          "agent_support": ["data-analysis-helper", "course-qa"],
+          "sensitivity": "normal",
+          "routing_hint": "local"
+        },
+        {
+          "activity_id": "M1-A3",
+          "type": "fieldwork",
+          "description": "자기 소속 학교의 최근 1개월 행정업무 5건을 대표학교와 같은 스키마(도메인·트리거·담당·시스템)로 기록한다. 개인정보·학교 식별 정보 제거 전까지는 로컬에서만 다룬다",
+          "agent_support": ["assignment-scaffold", "data-analysis-helper"],
+          "sensitivity": "sensitive",
+          "routing_hint": "local"
+        },
+        {
+          "activity_id": "M1-A4",
+          "type": "discussion",
+          "description": "공개 문서 기반 714건 데이터에 보이지 않는 업무(구두 지시, 메신저 업무, 수기 처리)는 무엇인지 사례를 들어 토론하고, 미분류 124건의 의미를 해석한다",
+          "agent_support": ["course-qa"],
+          "sensitivity": "normal",
+          "routing_hint": "either"
+        }
+      ],
+      "assessment": {
+        "artifact": "자기 학교 업무 5건 기록표(비식별 처리본) + 도메인별·월별 분포 분석 노트",
+        "rubric_ref": "kb://validation/teacher_cards"
+      }
+    },
+    {
+      "module_id": "M2",
+      "title": "발생 원인 — 왜 학교에서 발생하는가",
+      "weeks": [4, 5],
+      "core_question": "L0–L4 조건 레이어로 원인을 데이터 기반 분석",
+      "learning_objectives": [
+        "L0–L4 조건 레이어(L0 법령·교육부 지침·국가시스템 / L1 전국 공통 핵심조건 / L2 시도교육청 조건 / L3 학교급·규모·유형·지역·프로그램 / L4 개별학교 공개 흔적·고유 사건)를 구분하여 설명할 수 있다",
+        "일반모델 조건 단위 320개(v6)와 특수모델 업무 이벤트 857건의 관계를 이해한다",
+        "보수 해석률 19.49%와 광의 해석률 46.79%의 차이가 의미하는 바를 해석할 수 있다",
+        "자기 학교 업무 사건을 L0–L4 레이어에 매핑하여 발생 원인을 구조적으로 분석할 수 있다"
+      ],
+      "resources": [
+        "kb://model/l0_l4_conditions_320",
+        "kb://model/general_vs_special",
+        "kb://causal/work_occurrence_model"
+      ],
+      "activities": [
+        {
+          "activity_id": "M2-A1",
+          "type": "reading",
+          "description": "행정업무 발생원인 모델 문서와 L0–L4 조건 단위 320개(v6) 목록을 읽고, 각 레이어의 정의와 대표 조건 사례를 레이어별 1건 이상 정리한다",
+          "agent_support": ["course-qa"],
+          "sensitivity": "normal",
+          "routing_hint": "either"
+        },
+        {
+          "activity_id": "M2-A2",
+          "type": "data_analysis",
+          "description": "M1-A3에서 기록한 자기 학교 업무 5건 각각의 발생 원인을 L0–L4 조건 레이어에 매핑하고, 일반모델 320개 조건 중 해당 조건이 있는지 대조한다",
+          "agent_support": ["data-analysis-helper", "course-qa"],
+          "sensitivity": "sensitive",
+          "routing_hint": "local"
+        },
+        {
+          "activity_id": "M2-A3",
+          "type": "discussion",
+          "description": "보수 해석률 19.49% 대 광의 해석률 46.79%(v6)의 격차를 놓고, 일반모델이 개별 학교 업무를 어디까지 설명하는지·설명하지 못하는 잔여는 무엇인지 토론한다",
+          "agent_support": ["course-qa"],
+          "sensitivity": "normal",
+          "routing_hint": "either"
+        },
+        {
+          "activity_id": "M2-A4",
+          "type": "writing",
+          "description": "자기 학교 업무 1건을 골라 발생 원인 분석 메모(트리거가 된 조건 레이어, 일반모델 적용 여부, 학교 고유 요인)를 1쪽으로 작성한다. 학교 식별 정보는 일반화하여 표기한다",
+          "agent_support": ["assignment-scaffold", "rubric-self-check"],
+          "sensitivity": "sensitive",
+          "routing_hint": "local"
+        }
+      ],
+      "assessment": {
+        "artifact": "자기 학교 업무 1건의 L0–L4 발생 원인 분석 메모(비식별본)",
+        "rubric_ref": "kb://validation/teacher_cards"
+      }
+    },
+    {
+      "module_id": "M3",
+      "title": "담당 구조 — 왜 그가 담당하는가",
+      "weeks": [6, 7],
+      "core_question": "업무 배분·검토경계를 데이터 기반 분석",
+      "learning_objectives": [
+        "업무 배분 구조와 검토경계(누가 생성하고 누가 검토·결재하는가)의 개념을 데이터로 설명할 수 있다",
+        "현장체험학습 관련 이벤트 2,629건(병목 검증 카드 TVC-001)을 통해 특정 업무에 부하가 집중되는 병목 구조를 분석할 수 있다",
+        "자기 학교의 업무분장을 도메인·담당·검토경계 관점에서 비판적으로 검토할 수 있다",
+        "교사 검증 카드의 검증 절차를 이해하고 데이터 기반 주장에 현장 검증이 필요한 이유를 설명할 수 있다"
+      ],
+      "resources": [
+        "kb://validation/teacher_cards",
+        "kb://causal/work_occurrence_model",
+        "kb://calendar/domain_summary"
+      ],
+      "activities": [
+        {
+          "activity_id": "M3-A1",
+          "type": "case_analysis",
+          "description": "병목 검증 카드 TVC-001(현장체험학습 관련 이벤트 2,629건)을 분석하여 단일 업무 유형에 이벤트가 집중되는 구조적 원인과 담당자 부하를 추정한다",
+          "agent_support": ["course-qa", "data-analysis-helper"],
+          "sensitivity": "normal",
+          "routing_hint": "either"
+        },
+        {
+          "activity_id": "M3-A2",
+          "type": "fieldwork",
+          "description": "자기 학교의 업무분장표(또는 자신의 담당 업무 목록)를 10개 도메인에 매핑하고, 각 업무의 검토경계(기안자→검토자→결재자)를 표로 정리한다. 인명·학교명은 역할명으로 치환하기 전까지 로컬에서만 다룬다",
+          "agent_support": ["assignment-scaffold", "data-analysis-helper"],
+          "sensitivity": "sensitive",
+          "routing_hint": "local"
+        },
+        {
+          "activity_id": "M3-A3",
+          "type": "discussion",
+          "description": "도메인별 업무 요약을 근거로 '왜 이 업무를 교사가 담당하는가'를 행정실·교육청·외부기관과의 분담 가능성 관점에서 토론하고, 재배분 시나리오 1건을 제안한다",
+          "agent_support": ["course-qa"],
+          "sensitivity": "normal",
+          "routing_hint": "either"
+        },
+        {
+          "activity_id": "M3-A4",
+          "type": "writing",
+          "description": "자기 학교 담당 구조 분석문(병목 후보 업무 1건, 검토경계 단계 수, 재배분 제안)을 작성한다. 동료 공유용으로 비식별 처리한 요약본을 별도로 만든다",
+          "agent_support": ["assignment-scaffold", "rubric-self-check"],
+          "sensitivity": "sensitive",
+          "routing_hint": "local"
+        }
+      ],
+      "assessment": {
+        "artifact": "자기 학교 담당 구조 분석문(비식별 요약본 포함)",
+        "rubric_ref": "kb://validation/teacher_cards"
+      }
+    },
+    {
+      "module_id": "M4",
+      "title": "데이터 파이프라인 설계",
+      "weeks": [8, 9, 10],
+      "core_question": "행정업무 혁신을 위한 수집→전처리→분석 파이프라인 설계",
+      "learning_objectives": [
+        "수집(정보공개포털·학교 홈페이지)→전처리(20,755건→15,851건)→분석(업무사건 추출 714건)의 파이프라인 각 단계 역할을 설명할 수 있다",
+        "수집·전처리·추출 스크립트의 입력·출력·핵심 처리 로직을 코드 수준에서 읽고 요약할 수 있다",
+        "자기 학교 맥락에 맞는 수집→전처리→분석 파이프라인을 비식별 원칙을 포함하여 설계할 수 있다",
+        "파이프라인 설계서를 동료와 상호 검토하고 개선점을 반영할 수 있다"
+      ],
+      "resources": [
+        "kb://pipeline/collect_open_go",
+        "kb://pipeline/preprocess_teacher_work",
+        "kb://pipeline/extract_work_events",
+        "kb://design/dataset_design_doc"
+      ],
+      "activities": [
+        {
+          "activity_id": "M4-A1",
+          "type": "code_reading",
+          "description": "정보공개포털 수집 스크립트와 전처리 파이프라인 스크립트를 읽고, 1차 수집 20,755건이 분석 가능 15,851건으로 줄어드는 단계별 필터링 기준을 다이어그램으로 정리한다",
+          "agent_support": ["course-qa", "data-analysis-helper"],
+          "sensitivity": "normal",
+          "routing_hint": "either"
+        },
+        {
+          "activity_id": "M4-A2",
+          "type": "hands_on",
+          "description": "업무사건 추출 스크립트를 대표학교 공개 데이터 샘플에 실행하여 업무사건 후보가 추출되는 과정을 재현하고, 추출 규칙 1개를 수정했을 때 결과 변화를 관찰한다",
+          "agent_support": ["data-analysis-helper", "course-qa"],
+          "sensitivity": "normal",
+          "routing_hint": "local"
+        },
+        {
+          "activity_id": "M4-A3",
+          "type": "design",
+          "description": "자기 학교의 공개 가능 데이터원을 조사하고, 수집→전처리→비식별→분석으로 이어지는 자기 학교용 파이프라인 설계서(데이터원 목록, 처리 단계, 비식별 규칙, 산출물 정의)를 작성한다",
+          "agent_support": ["assignment-scaffold", "data-analysis-helper", "week-planner"],
+          "sensitivity": "sensitive",
+          "routing_hint": "local"
+        },
+        {
+          "activity_id": "M4-A4",
+          "type": "peer_review",
+          "description": "비식별 처리된 파이프라인 설계서를 동료와 교환하여 데이터원 타당성·비식별 규칙 충분성·실행 가능성 3개 기준으로 상호 검토한다",
+          "agent_support": ["rubric-self-check", "course-qa"],
+          "sensitivity": "normal",
+          "routing_hint": "either"
+        }
+      ],
+      "assessment": {
+        "artifact": "자기 학교용 데이터 파이프라인 설계서(비식별본) + 동료 검토 반영 기록",
+        "rubric_ref": "kb://validation/teacher_cards"
+      }
+    },
+    {
+      "module_id": "M5",
+      "title": "AI 활용 전략 수립",
+      "weeks": [11, 12],
+      "core_question": "업무별 AI 적용 가능성 평가·전략 수립 (시뮬레이터 실습)",
+      "learning_objectives": [
+        "행정업무 프로세스 시뮬레이터(D-2 스키마, 6차원 루브릭)로 업무 프로세스를 모델링하고 AI 개입 지점을 식별할 수 있다",
+        "AI 전략 검증 패킷(AIC-0001~0030)의 허용 자동화 수준 5단계를 업무 특성에 따라 판별할 수 있다",
+        "업무 도메인별 AI 적용 가능성을 민감도·검토경계·자동화 수준 기준으로 평가할 수 있다",
+        "자기 학교 업무에 대한 AI 활용 전략 초안을 근거 자원을 인용하여 작성할 수 있다"
+      ],
+      "resources": [
+        "kb://simulator/app",
+        "kb://validation/ai_strategy_packet",
+        "kb://calendar/monthly_domain_crosstab"
+      ],
+      "activities": [
+        {
+          "activity_id": "M5-A1",
+          "type": "simulation",
+          "description": "행정업무 프로세스 시뮬레이터에서 대표학교 업무 1건을 D-2 스키마로 모델링하고 6차원 루브릭으로 현행 프로세스를 진단한 뒤 AI 개입 지점 후보를 표시한다",
+          "agent_support": ["course-qa", "data-analysis-helper"],
+          "sensitivity": "normal",
+          "routing_hint": "local"
+        },
+        {
+          "activity_id": "M5-A2",
+          "type": "case_analysis",
+          "description": "AI 전략 검증 패킷의 AIC-0001~0030 사례에서 허용 자동화 수준 5단계 판정 근거를 분석하고, 자동화 수준이 낮게 판정된 사례의 공통 특징(개인정보·판단 재량·민원 접점)을 도출한다",
+          "agent_support": ["course-qa"],
+          "sensitivity": "normal",
+          "routing_hint": "either"
+        },
+        {
+          "activity_id": "M5-A3",
+          "type": "writing",
+          "description": "자기 학교 업무 3건에 대해 허용 자동화 수준 5단계 판정과 AI 적용 전략(개입 지점, 기대 효과, 위험 통제)을 작성한다. 민원·학생·개인정보 관련 업무가 포함되므로 로컬에서 작성한다",
+          "agent_support": ["assignment-scaffold", "data-analysis-helper", "rubric-self-check"],
+          "sensitivity": "sensitive",
+          "routing_hint": "local"
+        },
+        {
+          "activity_id": "M5-A4",
+          "type": "discussion",
+          "description": "월×도메인 크로스탭을 근거로 업무 피크 시기에 AI 지원이 가장 효과적인 도메인이 어디인지 토론하고, 도메인별 AI 적용 우선순위를 합의한다",
+          "agent_support": ["course-qa", "data-analysis-helper"],
+          "sensitivity": "normal",
+          "routing_hint": "either"
+        }
+      ],
+      "assessment": {
+        "artifact": "자기 학교 업무 3건의 AI 활용 전략 평가서(허용 자동화 수준 판정 포함, 비식별본)",
+        "rubric_ref": "kb://validation/ai_strategy_packet"
+      }
+    },
+    {
+      "module_id": "M6",
+      "title": "혁신 계획 수립",
+      "weeks": [13, 14, 15],
+      "core_question": "AI 활용 행정업무 혁신 계획서 작성·동료평가·발표",
+      "learning_objectives": [
+        "백서 9단계 카드의 구조를 따라 실태→원인→담당→파이프라인→AI 전략을 통합한 혁신 계획서를 작성할 수 있다",
+        "혁신 계획서의 모든 사실 주장에 resource_id 기반 근거를 연결할 수 있다",
+        "6차원 루브릭으로 자기 계획서를 자가 점검하고 동료평가를 수행할 수 있다",
+        "비식별 처리된 계획서를 발표하고 현장 적용 관점의 피드백을 반영할 수 있다"
+      ],
+      "resources": [
+        "kb://whitepaper/stage1",
+        "kb://whitepaper/stage2",
+        "kb://whitepaper/stage3",
+        "kb://whitepaper/stage4",
+        "kb://whitepaper/stage5",
+        "kb://whitepaper/stage6",
+        "kb://whitepaper/stage7",
+        "kb://whitepaper/stage8",
+        "kb://whitepaper/stage9",
+        "kb://validation/ai_strategy_packet",
+        "kb://validation/teacher_cards"
+      ],
+      "activities": [
+        {
+          "activity_id": "M6-A1",
+          "type": "writing",
+          "description": "백서 9단계 카드를 뼈대로 M1~M5 산출물을 통합하여 '인공지능 활용 행정업무 혁신 계획서' 초안(소속 학교 맥락 적용, 실태·원인·담당 구조·파이프라인·AI 전략·실행 일정 포함)을 작성한다. 자기 학교 업무 기록을 직접 다루므로 로컬에서 작성한다",
+          "agent_support": ["assignment-scaffold", "week-planner", "course-qa"],
+          "sensitivity": "sensitive",
+          "routing_hint": "local"
+        },
+        {
+          "activity_id": "M6-A2",
+          "type": "self_assessment",
+          "description": "초안을 6차원 루브릭과 허용 자동화 수준 판정 기준으로 자가 점검하고, 근거 없는 주장·비식별 누락·실행 불가능 항목을 수정 목록으로 만든다",
+          "agent_support": ["rubric-self-check"],
+          "sensitivity": "sensitive",
+          "routing_hint": "local"
+        },
+        {
+          "activity_id": "M6-A3",
+          "type": "peer_review",
+          "description": "비식별 처리 완료본을 동료 2인과 교환하여 교사 검증 카드 형식(현실 부합성·실행 가능성·위험 통제)으로 상호 평가하고 평가 결과를 계획서에 반영한다",
+          "agent_support": ["rubric-self-check", "course-qa"],
+          "sensitivity": "normal",
+          "routing_hint": "either"
+        },
+        {
+          "activity_id": "M6-A4",
+          "type": "presentation",
+          "description": "최종 혁신 계획서(비식별본)를 10분 발표하고, 청중 질의에 대해 resource_id 근거를 들어 응답한다",
+          "agent_support": ["course-qa", "week-planner"],
+          "sensitivity": "normal",
+          "routing_hint": "either"
+        }
+      ],
+      "assessment": {
+        "artifact": "인공지능 활용 행정업무 혁신 계획서 최종본(비식별본) + 동료평가 기록 + 발표",
+        "rubric_ref": "kb://validation/ai_strategy_packet"
+      }
+    }
+  ],
+  "agent_policies": {
+    "raw_data_stays_local": true,
+    "consent_gated_export": true,
+    "sensitive_keywords_route_local": ["성적", "개인정보", "민원", "상담"]
+  }
+}
