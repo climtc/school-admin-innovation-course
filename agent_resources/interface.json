@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1.0",
+  "entrypoints": {
+    "human": "syllabus/SYLLABUS_HUMAN.md",
+    "agent": "syllabus/syllabus_agent.json"
+  },
+  "resource_manifest": "agent_resources/resource_manifest.json",
+  "skills_dir": "agent_resources/skills/",
+  "bindings": [
+    {
+      "module_id": "M1",
+      "skills": ["course-qa", "data-analysis-helper", "assignment-scaffold", "week-planner"],
+      "resources": [
+        "kb://design/dataset_design_doc",
+        "kb://calendar/work_event_candidates_714",
+        "kb://calendar/domain_summary",
+        "kb://calendar/monthly_domain_crosstab"
+      ]
+    },
+    {
+      "module_id": "M2",
+      "skills": ["course-qa", "data-analysis-helper", "assignment-scaffold", "rubric-self-check"],
+      "resources": [
+        "kb://model/l0_l4_conditions_320",
+        "kb://model/general_vs_special",
+        "kb://causal/work_occurrence_model"
+      ]
+    },
+    {
+      "module_id": "M3",
+      "skills": ["course-qa", "data-analysis-helper", "assignment-scaffold", "rubric-self-check"],
+      "resources": [
+        "kb://validation/teacher_cards",
+        "kb://causal/work_occurrence_model",
+        "kb://calendar/domain_summary"
+      ]
+    },
+    {
+      "module_id": "M4",
+      "skills": ["course-qa", "data-analysis-helper", "assignment-scaffold", "rubric-self-check", "week-planner"],
+      "resources": [
+        "kb://pipeline/collect_open_go",
+        "kb://pipeline/preprocess_teacher_work",
+        "kb://pipeline/extract_work_events",
+        "kb://design/dataset_design_doc"
+      ]
+    },
+    {
+      "module_id": "M5",
+      "skills": ["course-qa", "data-analysis-helper", "assignment-scaffold", "rubric-self-check"],
+      "resources": [
+        "kb://simulator/app",
+        "kb://validation/ai_strategy_packet",
+        "kb://calendar/monthly_domain_crosstab"
+      ]
+    },
+    {
+      "module_id": "M6",
+      "skills": ["course-qa", "assignment-scaffold", "rubric-self-check", "week-planner"],
+      "resources": [
+        "kb://whitepaper/stage1",
+        "kb://whitepaper/stage2",
+        "kb://whitepaper/stage3",
+        "kb://whitepaper/stage4",
+        "kb://whitepaper/stage5",
+        "kb://whitepaper/stage6",
+        "kb://whitepaper/stage7",
+        "kb://whitepaper/stage8",
+        "kb://whitepaper/stage9",
+        "kb://validation/ai_strategy_packet",
+        "kb://validation/teacher_cards"
+      ]
+    }
+  ]
+}

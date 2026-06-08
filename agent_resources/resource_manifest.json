@@ -1,0 +1,227 @@
+{
+  "schema_version": "0.1.0",
+  "generated_at": "2026-06-08",
+  "note": "include_in_package=true 항목만 코스 패키지에 동봉된다. source_only 항목은 원 지식베이스(local-kb)에서만 접근 가능하며 공개 패키지에 포함하지 않는다.",
+  "resources": [
+    {
+      "resource_id": "kb://calendar/work_event_candidates_714",
+      "title": "대표학교 연간 업무사건 후보 714건 (2025.3–2026.2)",
+      "type": "dataset",
+      "deid_status": "generalized",
+      "include_in_package": false,
+      "source_uri": "local-kb://대표학교_연간행정업무_지식베이스/03_analysis/work_event_candidates/work_event_candidates_202503_202602_20260521.csv",
+      "sha256": "TBD",
+      "module_tags": ["M1", "M2", "M3"]
+    },
+    {
+      "resource_id": "kb://calendar/domain_summary",
+      "title": "도메인별 업무 요약 (10개 도메인, 완전 비식별)",
+      "type": "dataset",
+      "deid_status": "full",
+      "include_in_package": true,
+      "source_uri": "local-kb://대표학교_연간행정업무_지식베이스/03_analysis/work_event_candidates/domain_event_summary_20260521.csv",
+      "sha256": "TBD",
+      "module_tags": ["M1", "M3"]
+    },
+    {
+      "resource_id": "kb://calendar/monthly_domain_crosstab",
+      "title": "월×도메인 업무사건 크로스탭 (완전 비식별)",
+      "type": "dataset",
+      "deid_status": "full",
+      "include_in_package": true,
+      "source_uri": "local-kb://대표학교_연간행정업무_지식베이스/03_analysis/work_event_candidates/monthly_domain_event_summary_202503_202602_20260521.csv",
+      "sha256": "TBD",
+      "module_tags": ["M1", "M5"]
+    },
+    {
+      "resource_id": "kb://design/dataset_design_doc",
+      "title": "대표학교 연간 행정업무 데이터세트 설계서 (10개 도메인 분류체계)",
+      "type": "document",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://대표학교_연간행정업무_지식베이스/01_design/대표학교_연간행정업무_데이터세트_설계서.md",
+      "sha256": "TBD",
+      "module_tags": ["M1", "M4"]
+    },
+    {
+      "resource_id": "kb://model/l0_l4_conditions_320",
+      "title": "L0–L4 조건 단위 320개 (일반모델 v6, 핵심 연구 인터페이스)",
+      "type": "document",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://교사행정업무_일반특수모델_통합연구_20260529/03_schemas/core_research_interfaces_20260529.md",
+      "sha256": "TBD",
+      "module_tags": ["M2"]
+    },
+    {
+      "resource_id": "kb://model/general_vs_special",
+      "title": "일반/특수모델 통합 전략 문서 (보수 19.49% / 광의 46.79% 해석률)",
+      "type": "document",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://교사행정업무_일반특수모델_통합연구_20260529/01_strategy/integration_strategy_20260529.md",
+      "sha256": "TBD",
+      "module_tags": ["M2"]
+    },
+    {
+      "resource_id": "kb://causal/work_occurrence_model",
+      "title": "행정업무 발생원인 모델 및 후속작업 설계",
+      "type": "document",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://대표학교_연간행정업무_지식베이스/04_outputs/work_occurrence_causal_model/행정업무_발생원인_모델_및_후속작업_설계_20260522.md",
+      "sha256": "TBD",
+      "module_tags": ["M2", "M3"]
+    },
+    {
+      "resource_id": "kb://pipeline/collect_open_go",
+      "title": "정보공개포털 수집 스크립트",
+      "type": "script",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://행정업무경감_poC/open_go_downloader.py",
+      "sha256": "TBD",
+      "module_tags": ["M4"]
+    },
+    {
+      "resource_id": "kb://pipeline/preprocess_teacher_work",
+      "title": "교사 행정업무 파일 전처리 파이프라인 (20,755건→15,851건)",
+      "type": "script",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://행정업무경감_poC/build_teacher_work_preprocess_pipeline.py",
+      "sha256": "TBD",
+      "module_tags": ["M4"]
+    },
+    {
+      "resource_id": "kb://pipeline/extract_work_events",
+      "title": "업무사건 후보 추출 스크립트 (714건 산출)",
+      "type": "script",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://대표학교_연간행정업무_지식베이스/03_analysis/scripts/extract_work_event_candidates.py",
+      "sha256": "TBD",
+      "module_tags": ["M4"]
+    },
+    {
+      "resource_id": "kb://simulator/app",
+      "title": "행정업무 프로세스 시뮬레이터 프로토타입 (D-2 스키마, 6차원 루브릭)",
+      "type": "app",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://행정업무_시뮬레이터_프로토타입/",
+      "sha256": "TBD",
+      "module_tags": ["M5"]
+    },
+    {
+      "resource_id": "kb://whitepaper/stage1",
+      "title": "백서 카드 1단계",
+      "type": "card",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://whitepaper/cards/stage1.md",
+      "sha256": "TBD",
+      "module_tags": ["M6"]
+    },
+    {
+      "resource_id": "kb://whitepaper/stage2",
+      "title": "백서 카드 2단계",
+      "type": "card",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://whitepaper/cards/stage2.md",
+      "sha256": "TBD",
+      "module_tags": ["M6"]
+    },
+    {
+      "resource_id": "kb://whitepaper/stage3",
+      "title": "백서 카드 3단계",
+      "type": "card",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://whitepaper/cards/stage3.md",
+      "sha256": "TBD",
+      "module_tags": ["M6"]
+    },
+    {
+      "resource_id": "kb://whitepaper/stage4",
+      "title": "백서 카드 4단계",
+      "type": "card",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://whitepaper/cards/stage4.md",
+      "sha256": "TBD",
+      "module_tags": ["M6"]
+    },
+    {
+      "resource_id": "kb://whitepaper/stage5",
+      "title": "백서 카드 5단계",
+      "type": "card",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://whitepaper/cards/stage5.md",
+      "sha256": "TBD",
+      "module_tags": ["M6"]
+    },
+    {
+      "resource_id": "kb://whitepaper/stage6",
+      "title": "백서 카드 6단계",
+      "type": "card",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://whitepaper/cards/stage6.md",
+      "sha256": "TBD",
+      "module_tags": ["M6"]
+    },
+    {
+      "resource_id": "kb://whitepaper/stage7",
+      "title": "백서 카드 7단계",
+      "type": "card",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://whitepaper/cards/stage7.md",
+      "sha256": "TBD",
+      "module_tags": ["M6"]
+    },
+    {
+      "resource_id": "kb://whitepaper/stage8",
+      "title": "백서 카드 8단계",
+      "type": "card",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://whitepaper/cards/stage8.md",
+      "sha256": "TBD",
+      "module_tags": ["M6"]
+    },
+    {
+      "resource_id": "kb://whitepaper/stage9",
+      "title": "백서 카드 9단계",
+      "type": "card",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://whitepaper/cards/stage9.md",
+      "sha256": "TBD",
+      "module_tags": ["M6"]
+    },
+    {
+      "resource_id": "kb://validation/teacher_cards",
+      "title": "교사 검증 카드팩 (TVC-001~ , 병목 검증 포함)",
+      "type": "card",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://통합_데이터허브/validation_pack/teacher_validation_cards_auto.md",
+      "sha256": "TBD",
+      "module_tags": ["M1", "M2", "M3", "M4", "M6"]
+    },
+    {
+      "resource_id": "kb://validation/ai_strategy_packet",
+      "title": "AI 전략 검증 패킷 (AIC-0001~0030, 허용 자동화 수준 5단계)",
+      "type": "card",
+      "deid_status": "source_only",
+      "include_in_package": false,
+      "source_uri": "local-kb://통합_데이터허브/validation_pack/ai_strategy_teacher_validation_packet.md",
+      "sha256": "TBD",
+      "module_tags": ["M5", "M6"]
+    }
+  ]
+}
